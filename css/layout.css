@@ -11,3 +11,19 @@
   display: flex;
   flex-direction: column;
 }
+
+.page2-row {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}

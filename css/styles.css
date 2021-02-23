@@ -1,4 +1,4 @@
-body {
+.start-page {
   background-image: url(../images/SK-A-2963.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -44,7 +44,43 @@ body {
   transition: color 0.5s ease;
 }
 
-#gstart:hover {
+#gstart:hover,
+.century:hover {
   background-color: black;
   color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.page2-bg {
+  background-image: url(../images/SK-A-2344.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
+
+.century {
+  margin: 20px 20px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  user-select: none;
+  width: 50%;
+  padding: 10px 30px;
+}
+
+.title-page-2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 3rem;
+  color: white;
+  user-select: none;
 }
