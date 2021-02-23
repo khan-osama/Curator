@@ -8,17 +8,35 @@ body {
 }
 
 .title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
   font-size: 4rem;
+  margin-bottom: 0;
 }
 
 .subtitle {
-  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: lighter;
+  font-size: 1.1rem;
 }
 
 .title,
 .subtitle {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
   color: white;
+  text-align: center;
+  user-select: none;
+}
+
+#gstart {
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 30px;
+  border: 1px grey solid;
+  user-select: none;
   text-align: center;
 }
