@@ -36,7 +36,15 @@ body {
   background-color: white;
   border-radius: 20px;
   padding: 10px 30px;
-  border: 1px grey solid;
+  border: 1px white solid;
   user-select: none;
   text-align: center;
+  outline: none;
+  transition: background-color 1s ease;
+  transition: color 0.5s ease;
+}
+
+#gstart:hover {
+  background-color: black;
+  color: white;
 }
