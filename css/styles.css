@@ -1,7 +1,24 @@
-html {
-  background: url(../images/SK-A-2963.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+body {
+  background-image: url(../images/SK-A-2963.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  background-color: #464646;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+}
+
+.title,
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  color: white;
+  text-align: center;
 }
