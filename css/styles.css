@@ -44,6 +44,20 @@
   transition: color 0.5s ease;
 }
 
+.century {
+  margin: 20px 20px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  user-select: none;
+  width: 50%;
+  padding: 10px 30px;
+}
+
 #gstart:hover,
 .century:hover {
   background-color: black;
@@ -63,24 +77,36 @@
   background-color: #464646;
 }
 
-.century {
-  margin: 20px 20px;
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 1.3rem;
-  color: black;
-  background-color: white;
-  border-radius: 20px;
-  user-select: none;
-  width: 50%;
-  padding: 10px 30px;
-}
-
 .title-page-2 {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
   font-size: 3rem;
   color: white;
   user-select: none;
+}
+
+.header-bg {
+  background-color: rgb(0, 0, 0, 0.7);
+  margin: 20px 10px;
+  padding: 0 15px;
+}
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .form-container {
+    max-height: 65%;
+  }
+
+  .header-bg,
+  .title-page-2 {
+    height: 20%;
+    font-size: 2rem;
+  }
+
+  .century {
+    margin: 10px 0;
+  }
 }
