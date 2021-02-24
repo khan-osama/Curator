@@ -137,3 +137,14 @@
 .app-bg {
   background-color: white;
 }
+
+header {
+  display: flex;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+}
+
+header h1 {
+  font-weight: 500;
+  margin-top: 5px;
+}
