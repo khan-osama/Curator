@@ -36,7 +36,7 @@
   background-color: white;
   border-radius: 20px;
   padding: 10px 30px;
-  border: 1px white solid;
+  border: 0.2px white solid;
   user-select: none;
   text-align: center;
   outline: none;
@@ -56,6 +56,7 @@
   user-select: none;
   width: 50%;
   padding: 10px 30px;
+  outline: none;
 }
 
 #gstart:hover,
@@ -109,4 +110,19 @@
   .century {
     margin: 10px 0;
   }
+}
+
+.century-onclick {
+  background-color: black;
+  color: white;
+  margin: 20px 20px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  border-radius: 20px;
+  user-select: none;
+  width: 50%;
+  padding: 10px 30px;
+  outline: none;
 }
