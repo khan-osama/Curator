@@ -5,6 +5,8 @@ var $divPage2 = document.querySelector('.page2-row');
 var $divPage3 = document.querySelector('.page3');
 var $centuryButtons = document.querySelectorAll('.century');
 var $nextButton = document.querySelector('.next-button');
+var $artButton = document.querySelector('#next');
+var $backButton = document.querySelector('#previous');
 
 $gstart.addEventListener('click', changePage);
 
@@ -12,6 +14,7 @@ function changePage(event) {
   $body.className = 'page2-bg';
   $divPage1.className = 'hidden row';
   $divPage2.className = 'page2-row';
+  $divPage3.className = 'hidden';
   data.view = 'page2';
 }
 
@@ -49,3 +52,5 @@ if (data.view === 'page3') {
   $divPage2.className = 'hidden page2-row';
   $divPage3.className = 'page3';
 }
+
+$backButton.addEventListener('click', changePage);

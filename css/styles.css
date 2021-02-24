@@ -183,3 +183,7 @@ header h1 {
   user-select: none;
   padding-bottom: 10px;
 }
+
+.row-page3 {
+  user-select: none;
+}
