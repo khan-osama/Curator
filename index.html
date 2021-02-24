@@ -7,12 +7,66 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
+<body class="start-page">
+  <div class="row">
+    <div class="column-full">
+      <h1 class="title">
+        Curator
+      </h1>
+      <p class="subtitle">
+        Personal Art <br> Recommendations
+      </p>
+      <button id="gstart" type="button">Get Started</button>
+    </div>
+  </div>
+  <div class="hidden art-periods-row">
+    <div class="column-full">
+      <div class="header-bg">
+        <h1 class="title-art-periods">
+        What art history periods interest you?
+      </h1>
+      </div>
+      <div class="form-container">
+        <form class="button-container">
+          <button class="century" type="button">16th century</button>
+          <button class="century" type="button">17th century</button>
+          <button class="century" type="button">18th century</button>
+          <button class="century" type="button">19th century</button>
+          <button class="century" type="button">20th century</button>
+          <button class="century" type="button">Contemporary</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="art-period-next-button">
+    <img class="hidden next-button" src="images/next.svg" alt="next-button">
+  </div>
+  <div class="hidden confirmation-page">
+    <header>
+      <h1 class="app-title">
+        Curator
+      </h1>
+    </header>
+    <div class="row-confirmation-page">
+      <div class="column-full-confirmation-page">
+        <h1 class="confirm-title">
+          Ready?
+        </h1>
+        <img class="check" src="images/confirm.svg" alt="confirm">
+        <button id="next" type="button">Show me art!</button>
+        <button id="previous" type="button">I changed my mind</button>
+      </div>
+    </div>
+  </div>
+  <div class="hidden add-art-page">
+    <header>
+      <h1 class="app-title">
+        Curator</h1>
+    </header>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

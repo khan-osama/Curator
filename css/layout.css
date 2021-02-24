@@ -1,0 +1,44 @@
+.row,
+.row-confirmation-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-full,
+.column-full-confirmation-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.art-periods-row {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.art-period-next-button {
+  height: 5%;
+  width: 5%;
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.column-full-confirmation-page {
+  height: 90%;
+}
