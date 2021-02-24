@@ -37,6 +37,7 @@ $nextButton.addEventListener('click', changePage2);
 
 function changePage2(event) {
   $body.className = 'app-bg';
+  $gstart.className = 'hidden';
   $divPage2.className = 'hidden page2-row';
   $divPage3.className = 'page3';
   data.view = 'page3';
@@ -44,6 +45,7 @@ function changePage2(event) {
 
 if (data.view === 'page3') {
   $body.className = 'app-bg';
+  $gstart.className = 'hidden';
   $divPage2.className = 'hidden page2-row';
   $divPage3.className = 'page3';
 }
