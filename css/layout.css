@@ -1,5 +1,5 @@
 .row,
-.row-page3 {
+.row-confirmation-page {
   height: 100%;
   width: 100%;
   display: flex;
@@ -9,12 +9,12 @@
 }
 
 .column-full,
-.column-full-page3 {
+.column-full-confirmation-page {
   display: flex;
   flex-direction: column;
 }
 
-.page2-row {
+.art-periods-row {
   height: 100%;
   width: 100%;
   display: flex;
@@ -30,7 +30,7 @@
   height: 100%;
 }
 
-.page2-row-2 {
+.art-period-next-button {
   height: 5%;
   width: 5%;
   display: flex;
@@ -39,6 +39,6 @@
   bottom: 0;
 }
 
-.column-full-page3 {
+.column-full-confirmation-page {
   height: 90%;
 }

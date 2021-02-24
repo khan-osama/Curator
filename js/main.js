@@ -1,9 +1,9 @@
 var $gstart = document.querySelector('#gstart');
 var $body = document.querySelector('.start-page');
 var $divPage1 = document.querySelector('.row');
-var $divPage2 = document.querySelector('.page2-row');
-var $divPage3 = document.querySelector('.page3');
-var $divPage4 = document.querySelector('.page4');
+var $divPage2 = document.querySelector('.art-periods-row');
+var $divPage3 = document.querySelector('.confirmation-page');
+var $divPage4 = document.querySelector('.add-art-page');
 var $centuryButtons = document.querySelectorAll('.century');
 var $nextButton = document.querySelector('.next-button');
 var $artButton = document.querySelector('#next');
@@ -12,11 +12,11 @@ var $backButton = document.querySelector('#previous');
 $gstart.addEventListener('click', changePage);
 
 function changePage(event) {
-  $body.className = 'page2-bg';
+  $body.className = 'art-period-bg';
   $divPage1.className = 'hidden row';
-  $divPage2.className = 'page2-row';
+  $divPage2.className = 'art-periods-row';
   $divPage3.className = 'hidden';
-  data.view = 'page2';
+  data.view = 'art-periods-row';
 }
 
 $centuryButtons.forEach(item => {
@@ -31,10 +31,10 @@ $centuryButtons.forEach(item => {
   });
 });
 
-if (data.view === 'page2') {
-  $body.className = 'page2-bg';
+if (data.view === 'art-periods-row') {
+  $body.className = 'art-period-bg';
   $divPage1.className = 'hidden row';
-  $divPage2.className = 'page2-row';
+  $divPage2.className = 'art-periods-row';
 }
 
 $nextButton.addEventListener('click', changePage2);
@@ -42,16 +42,16 @@ $nextButton.addEventListener('click', changePage2);
 function changePage2(event) {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
-  $divPage2.className = 'hidden page2-row';
-  $divPage3.className = 'page3';
-  data.view = 'page3';
+  $divPage2.className = 'hidden art-periods-row';
+  $divPage3.className = 'confirmation-page';
+  data.view = 'confirmation-page';
 }
 
-if (data.view === 'page3') {
+if (data.view === 'confirmation-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
-  $divPage2.className = 'hidden page2-row';
-  $divPage3.className = 'page3';
+  $divPage2.className = 'hidden art-periods-row';
+  $divPage3.className = 'confirmation-page';
 }
 
 $backButton.addEventListener('click', changePage);
@@ -61,14 +61,14 @@ $artButton.addEventListener('click', changePage3);
 function changePage3(event) {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
-  $divPage3.className = 'hidden page3';
+  $divPage3.className = 'hidden confirmation-page';
   $divPage4.className = 'page4';
-  data.view = 'page4';
+  data.view = 'add-art-page';
 }
 
-if (data.view === 'page3') {
+if (data.view === 'add-art-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
-  $divPage3.className = 'hidden page3';
-  $divPage4.className = 'page4';
+  $divPage3.className = 'hidden confirmation-page';
+  $divPage4.className = 'add-art-page';
 }

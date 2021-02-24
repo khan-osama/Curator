@@ -5,9 +5,11 @@
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
+  user-select: none;
 }
 
-.title {
+.title,
+.title-art-periods {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
   font-size: 4rem;
@@ -27,7 +29,11 @@
   user-select: none;
 }
 
-#gstart {
+#gstart,
+.century,
+#next,
+#previous,
+.century-onclick {
   cursor: pointer;
   font-family: 'Playfair Display', serif;
   font-weight: 400;
@@ -44,35 +50,15 @@
   transition: color 0.5s ease;
 }
 
-.century {
+.century,
+.century-onclick {
   margin: 20px 20px;
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 1.3rem;
-  color: black;
-  background-color: white;
-  border-radius: 20px;
-  user-select: none;
   width: 50%;
-  padding: 10px 30px;
-  outline: none;
 }
 
 #next,
 #previous {
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 1.3rem;
-  color: black;
-  background-color: white;
-  border-radius: 20px;
-  padding: 10px 30px;
   border: 1px black solid;
-  user-select: none;
-  text-align: center;
-  outline: none;
   transition: background-color 1s ease;
   transition: color 0.5s ease;
   margin-top: 20px;
@@ -90,7 +76,7 @@
   display: none;
 }
 
-.page2-bg {
+.art-period-bg {
   background-image: url(../images/SK-A-2344.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -99,9 +85,7 @@
   background-color: #464646;
 }
 
-.title-page-2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
+.title-art-periods {
   font-size: 3rem;
   color: white;
   user-select: none;
@@ -123,7 +107,7 @@
   }
 
   .header-bg,
-  .title-page-2 {
+  .title-art-periods {
     height: 20%;
     font-size: 2rem;
   }
@@ -136,21 +120,10 @@
 .century-onclick {
   background-color: black;
   color: white;
-  margin: 20px 20px;
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 1.3rem;
-  border-radius: 20px;
-  user-select: none;
-  width: 50%;
-  padding: 10px 30px;
-  outline: none;
 }
 
 .next-button {
   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(4deg) brightness(106%) contrast(110%);
-  user-select: none;
   cursor: pointer;
   padding-bottom: 5px;
 }
@@ -175,15 +148,9 @@ header h1 {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
   font-size: 3rem;
-  user-select: none;
   margin-bottom: 5px;
 }
 
 .check {
-  user-select: none;
   padding-bottom: 10px;
-}
-
-.row-page3 {
-  user-select: none;
 }
