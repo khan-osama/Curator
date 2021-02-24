@@ -27,3 +27,17 @@
   flex-direction: column;
   height: 100%;
 }
+
+.page2-row-2 {
+  height: 5%;
+  width: 5%;
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/* .page2-row-2 img {
+  display: flex;
+  align-content: flex-end;
+} */
