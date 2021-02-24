@@ -59,8 +59,29 @@
   outline: none;
 }
 
+#next,
+#previous {
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 30px;
+  border: 1px black solid;
+  user-select: none;
+  text-align: center;
+  outline: none;
+  transition: background-color 1s ease;
+  transition: color 0.5s ease;
+  margin-top: 20px;
+}
+
 #gstart:hover,
-.century:hover {
+.century:hover,
+#next:hover,
+#previous:hover {
   background-color: black;
   color: white;
 }
@@ -147,4 +168,18 @@ header {
 header h1 {
   font-weight: 500;
   margin-top: 5px;
+}
+
+.confirm-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 3rem;
+  user-select: none;
+  margin-bottom: 5px;
+}
+
+.check {
+  user-select: none;
+  padding-bottom: 10px;
 }
