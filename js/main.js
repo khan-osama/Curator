@@ -8,7 +8,7 @@ var $centuryButtons = document.querySelectorAll('.century');
 var $nextButton = document.querySelector('.next-button');
 var $artButton = document.querySelector('#next');
 var $backButton = document.querySelector('#previous');
-var $artList = document.querySelector('art-container-list');
+var $artList = document.querySelector('.art-container-list');
 
 $gstart.addEventListener('click', changeToArtPeriod);
 
@@ -67,7 +67,7 @@ function changeToAddArtPage(event) {
   data.view = 'add-art-page';
 }
 
-if (data.view === 'add-art-page') {
+if (data.view === 'page3') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
   $divPage1.className = 'hidden';
@@ -79,12 +79,6 @@ function createArtPieces(event) {
   var newDivRow = document.createElement('div');
 
   newDivRow.className = 'art-adding-page-row';
-
-  /* newArtImg.setAttribute('src', data.img); */
-
-  /* newArtArtist.textContent = data.artistName; */
-  /* newItalics.textContent = data.artTitle;
-  newArtTitleYear.textContent = data.artYear; */
 
   $artList.appendChild(newDivRow);
   for (var i = 0; i < 2; i++) {
@@ -99,11 +93,23 @@ function createArtPieces(event) {
     newArtArtist.className = 'artist-name-header';
     newArtTitleYear.className = 'art-name-year';
 
+    newArtImg.setAttribute('src', 'images/SK-A-3262.jpg');
+
+    newArtArtist.textContent = 'Vincent Van Gogh';
+    newItalics.textContent = 'Self Portrait';
+    newArtTitleYear.textContent = ', ' + '1887';
+
     newDivRow.appendChild(newDivColumnHalf);
     newDivColumnHalf.appendChild(newLi);
     newLi.appendChild(newArtImg);
     newLi.appendChild(newArtArtist);
     newLi.appendChild(newArtTitleYear);
-    newArtTitleYear.appendChild(newItalics);
+
+    var firstChild = newArtTitleYear.firstChild;
+    newArtTitleYear.insertBefore(newItalics, firstChild);
   }
+
+  return newDivRow;
 }
+
+$artButton.addEventListener('click', createArtPieces);
