@@ -16,7 +16,9 @@
   margin-bottom: 0;
 }
 
-.subtitle {
+.subtitle,
+.artist-name-header,
+.art-name-year {
   font-family: 'Playfair Display', serif;
   font-weight: lighter;
   font-size: 1.1rem;
@@ -153,4 +155,24 @@ header h1 {
 
 .check {
   padding-bottom: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+li img {
+  width: 100%;
+}
+
+.artist-name-header {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.art-name-year {
+  margin-top: 5px;
+  font-size: 0.7rem;
 }

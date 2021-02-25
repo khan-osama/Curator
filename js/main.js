@@ -69,6 +69,13 @@ function changeToAddArtPage(event) {
 if (data.view === 'add-art-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
+  $divPage1.className = 'hidden';
   $divPage3.className = 'hidden confirmation-page';
   $divPage4.className = 'add-art-page';
 }
+
+/* function createArtPieces(event) {
+  var newLi = document.createElement('li');
+  var newIMG = document.createElement('img');
+
+} */

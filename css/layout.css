@@ -42,3 +42,18 @@
 .column-full-confirmation-page {
   height: 90%;
 }
+
+.art-adding-page-row {
+  display: flex;
+  justify-content: center;
+}
+
+.art-container-list {
+  padding-inline-start: 0;
+}
+
+.column-half {
+  display: flex;
+  margin: 15px;
+  flex-basis: 40%;
+}
