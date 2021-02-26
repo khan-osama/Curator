@@ -93,11 +93,12 @@ function createArtPieces(event) {
     newArtArtist.className = 'artist-name-header';
     newArtTitleYear.className = 'art-name-year';
 
-    newArtImg.setAttribute('src', 'images/SK-A-3262.jpg');
+    newArtImg.setAttribute('src', xhr.response.artObjects[1].webImage.url);
 
-    newArtArtist.textContent = 'Vincent Van Gogh';
-    newItalics.textContent = 'Self Portrait';
-    newArtTitleYear.textContent = ', ' + '1887';
+    newArtArtist.textContent = xhr.response.artObjects[1].principalOrFirstMaker;
+    newItalics.textContent = xhr.response.artObjects[1].title;
+    var artYearString = xhr.response.artObjects[1].longTitle.match(/\d/g);
+    newArtTitleYear.textContent = ', ' + artYearString.join('');
 
     newDivRow.appendChild(newDivColumnHalf);
     newDivColumnHalf.appendChild(newLi);
