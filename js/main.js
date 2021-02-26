@@ -94,7 +94,9 @@ function createArtPieces(event) {
   newArtArtist.textContent = event.principalOrFirstMaker;
   newItalics.textContent = event.title;
   var artYearString = event.longTitle.match(/\d/g);
-  newArtTitleYear.textContent = ', ' + artYearString.join('');
+  var artYearStringJoin = artYearString.join('');
+  artYearStringJoin = artYearStringJoin.substring(0, 4);
+  newArtTitleYear.textContent = ', ' + artYearStringJoin;
 
   $artAddDivRow.appendChild(newDivColumnHalf);
   newDivColumnHalf.appendChild(newLi);

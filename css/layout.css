@@ -63,3 +63,19 @@
 li {
   height: fit-content;
 }
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid black;
+}
+
+.navbar img {
+  width: 30px;
+  height: 30px;
+  margin: 5px 20px;
+}
