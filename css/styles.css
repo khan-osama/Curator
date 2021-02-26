@@ -163,6 +163,7 @@ li {
 
 li img {
   width: 100%;
+  cursor: pointer;
 }
 
 .artist-name-header {
@@ -177,6 +178,19 @@ li img {
   font-size: 0.7rem;
 }
 
-.art-container-list li {
-  cursor: pointer;
+.home-page-filled {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(272deg) brightness(0%) contrast(112%);
+}
+
+.add-icon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+h2 {
+  display: flex;
+  justify-content: space-between;
 }

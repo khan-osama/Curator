@@ -84,12 +84,15 @@ function createArtPieces(event) {
   var newArtArtist = document.createElement('h2');
   var newArtTitleYear = document.createElement('p');
   var newItalics = document.createElement('i');
+  var addArtIcon = document.createElement('img');
 
   newDivColumnHalf.className = 'column-half';
   newArtArtist.className = 'artist-name-header';
   newArtTitleYear.className = 'art-name-year';
 
   newArtImg.setAttribute('src', event.webImage.url);
+  addArtIcon.setAttribute('src', 'images/plus.svg');
+  addArtIcon.className = 'add-icon';
 
   newArtArtist.textContent = event.principalOrFirstMaker;
   newItalics.textContent = event.title;
@@ -100,6 +103,7 @@ function createArtPieces(event) {
 
   $artAddDivRow.appendChild(newDivColumnHalf);
   newDivColumnHalf.appendChild(newLi);
+  newArtArtist.appendChild(addArtIcon);
   newLi.appendChild(newArtImg);
   newLi.appendChild(newArtArtist);
   newLi.appendChild(newArtTitleYear);
