@@ -1,14 +1,35 @@
 /* exported data */
 var xhr = new XMLHttpRequest();
+var $nextButton = document.querySelector('.next-button');
 
-xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=19&ps=100');
-xhr.responseType = 'json';
-xhr.addEventListener('load', function () {
-  console.log(xhr.status);
-  console.log(xhr.response);
+$nextButton.addEventListener('click', function () {
+  var $selectedCentury = document.querySelector('.century-onclick');
+  if ($selectedCentury.innerHTML === '16th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=16&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '17th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=17&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '18th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=18&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '19th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=19&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '20th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=20&ps=100');
+  }
+  if ($selectedCentury.innerHTML === 'Contemporary') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=21&ps=100');
+  }
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
+  });
+
+  xhr.send();
 });
-
-xhr.send();
 
 var xhrTwo = new XMLHttpRequest();
 
