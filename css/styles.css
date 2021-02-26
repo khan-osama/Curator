@@ -176,3 +176,7 @@ li img {
   margin-top: 5px;
   font-size: 0.7rem;
 }
+
+.art-container-list li {
+  cursor: pointer;
+}

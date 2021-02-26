@@ -46,6 +46,7 @@
 .art-adding-page-row {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .art-container-list {

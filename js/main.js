@@ -9,6 +9,7 @@ var $nextButton = document.querySelector('.next-button');
 var $artButton = document.querySelector('#next');
 var $backButton = document.querySelector('#previous');
 var $artList = document.querySelector('.art-container-list');
+var $artAddDivRow = document.querySelector('.art-adding-page-row');
 
 $gstart.addEventListener('click', changeToArtPeriod);
 
@@ -76,41 +77,39 @@ if (data.view === 'page3') {
 }
 
 function createArtPieces(event) {
-  var newDivRow = document.createElement('div');
 
-  newDivRow.className = 'art-adding-page-row';
+  var newDivColumnHalf = document.createElement('div');
+  var newLi = document.createElement('li');
+  var newArtImg = document.createElement('img');
+  var newArtArtist = document.createElement('h2');
+  var newArtTitleYear = document.createElement('p');
+  var newItalics = document.createElement('i');
 
-  $artList.appendChild(newDivRow);
-  for (var i = 0; i < 2; i++) {
-    var newDivColumnHalf = document.createElement('div');
-    var newLi = document.createElement('li');
-    var newArtImg = document.createElement('img');
-    var newArtArtist = document.createElement('h2');
-    var newArtTitleYear = document.createElement('p');
-    var newItalics = document.createElement('i');
+  newDivColumnHalf.className = 'column-half';
+  newArtArtist.className = 'artist-name-header';
+  newArtTitleYear.className = 'art-name-year';
 
-    newDivColumnHalf.className = 'column-half';
-    newArtArtist.className = 'artist-name-header';
-    newArtTitleYear.className = 'art-name-year';
+  newArtImg.setAttribute('src', event.webImage.url);
 
-    newArtImg.setAttribute('src', xhr.response.artObjects[1].webImage.url);
+  newArtArtist.textContent = event.principalOrFirstMaker;
+  newItalics.textContent = event.title;
+  var artYearString = event.longTitle.match(/\d/g);
+  newArtTitleYear.textContent = ', ' + artYearString.join('');
 
-    newArtArtist.textContent = xhr.response.artObjects[1].principalOrFirstMaker;
-    newItalics.textContent = xhr.response.artObjects[1].title;
-    var artYearString = xhr.response.artObjects[1].longTitle.match(/\d/g);
-    newArtTitleYear.textContent = ', ' + artYearString.join('');
+  $artAddDivRow.appendChild(newDivColumnHalf);
+  newDivColumnHalf.appendChild(newLi);
+  newLi.appendChild(newArtImg);
+  newLi.appendChild(newArtArtist);
+  newLi.appendChild(newArtTitleYear);
 
-    newDivRow.appendChild(newDivColumnHalf);
-    newDivColumnHalf.appendChild(newLi);
-    newLi.appendChild(newArtImg);
-    newLi.appendChild(newArtArtist);
-    newLi.appendChild(newArtTitleYear);
+  var firstChild = newArtTitleYear.firstChild;
+  newArtTitleYear.insertBefore(newItalics, firstChild);
 
-    var firstChild = newArtTitleYear.firstChild;
-    newArtTitleYear.insertBefore(newItalics, firstChild);
-  }
-
-  return newDivRow;
+  $artList.appendChild($artAddDivRow);
 }
 
-$artButton.addEventListener('click', createArtPieces);
+$artButton.addEventListener('click', function (event) {
+  for (var i = 0; i < xhr.response.artObjects.length; i++) {
+    createArtPieces(xhr.response.artObjects[i]);
+  }
+});
