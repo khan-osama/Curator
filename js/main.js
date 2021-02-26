@@ -25,6 +25,8 @@ $centuryButtons.forEach(item => {
   item.addEventListener('click', event => {
     if (item.className === 'century') {
       item.className = 'century-onclick';
+      var centurySelectedData = document.querySelector('.century-onclick');
+      data.centuryPicked = centurySelectedData.innerHTML;
       $nextButton.className = 'next-button';
     } else {
       item.className = 'century';
@@ -68,7 +70,7 @@ function changeToAddArtPage(event) {
   data.view = 'add-art-page';
 }
 
-if (data.view === 'page3') {
+if (data.view === 'add-art-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
   $divPage1.className = 'hidden';
