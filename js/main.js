@@ -119,3 +119,41 @@ $artButton.addEventListener('click', function (event) {
     createArtPieces(xhr.response.artObjects[i]);
   }
 });
+
+// navigation pane
+var $homePageEmpty = document.querySelector('.home-page-empty');
+var $homePageFull = document.querySelector('.home-page-filled');
+var $searchEmpty = document.querySelector('.search-empty');
+var $searchFull = document.querySelector('.search-filled');
+var $heartEmpty = document.querySelector('.heart-empty');
+var $heartFull = document.querySelector('.heart-filled');
+
+function resetIcons(reset) {
+  $homePageFull.className = 'hidden';
+  $searchFull.className = 'hidden';
+  $heartFull.className = 'hidden';
+  $homePageEmpty.className = 'home-page-empty';
+  $searchEmpty.className = 'search-empty';
+  $heartEmpty.className = 'heart-empty';
+}
+
+$searchEmpty.addEventListener('click', function (event) {
+  resetIcons();
+  $searchEmpty.className = 'hidden';
+  $searchFull.className = 'search-filled';
+  $artList.className = 'hidden';
+});
+
+$heartEmpty.addEventListener('click', function (event) {
+  resetIcons();
+  $heartEmpty.className = 'hidden';
+  $heartFull.className = 'heart-filled';
+  $artList.className = 'hidden';
+});
+
+$homePageEmpty.addEventListener('click', function (event) {
+  resetIcons();
+  $homePageEmpty.className = 'hidden';
+  $homePageFull.className = 'home-page-filled';
+  $artList.className = 'art-container-list';
+});

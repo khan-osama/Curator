@@ -39,11 +39,6 @@ function artDetails(objectNum) {
   xhrTwo.addEventListener('load', function () {
     console.log(xhrTwo.status);
     console.log(xhrTwo.response);
-    /* for (var i = 0; i < xhrTwo.response.length; i++) {
-      var newLi = document.createElement('li');
-      newLi.textContent = xhrTwo.response[i].name;
-      $usersList.appendChild(newLi);
-    } */
   });
 
   xhrTwo.send();
@@ -62,12 +57,3 @@ window.addEventListener('beforeunload', function (event) {
   var dataJSON = JSON.stringify(data);
   localStorage.setItem('view-data', dataJSON);
 });
-
-/* Artist name from data */
-/* artObjects[0].principalOrFirstMaker */
-
-/* Art title from data
-artObjects[0].title */
-
-/* Art image from data
-artObjects[0].webImage.url */
