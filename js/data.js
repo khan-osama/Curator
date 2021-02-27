@@ -125,14 +125,11 @@ window.addEventListener('DOMContentLoaded', function () {
   xhr.addEventListener('load', function () {
     console.log(xhr.status);
     console.log(xhr.response);
-  });
-
-  xhr.send();
-
-  setTimeout(function delayedCreateDOMRefresh() {
     for (var i = 0; i < xhr.response.artObjects.length; i++) {
       createArtPieces(xhr.response.artObjects[i]);
     }
-  }, 3000);
+  });
+
+  xhr.send();
 
 });
