@@ -97,6 +97,9 @@ function fetchData(data) {
   xhr.addEventListener('load', function () {
     console.log(xhr.status);
     console.log(xhr.response);
+    for (var i = 0; i < xhr.response.artObjects.length; i++) {
+      createArtPieces(xhr.response.artObjects[i]);
+    }
   });
 
   xhr.send();
