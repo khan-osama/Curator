@@ -194,3 +194,11 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
+
+.remove-icon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+}

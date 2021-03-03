@@ -34,7 +34,6 @@ $centuryButtons.forEach(item => {
     }
   });
 });
-
 if (data.view === 'art-periods-row') {
   $body.className = 'art-period-bg';
   $divPage1.className = 'hidden row';
@@ -68,9 +67,26 @@ function changeToAddArtPage(event) {
   $divPage3.className = 'hidden confirmation-page';
   $divPage4.className = 'page4';
   data.view = 'add-art-page';
+  var $addIcons = document.querySelectorAll('.add-icon');
+  console.log($addIcons);
+  $addIcons.forEach(addButton => {
+    addButton.addEventListener('click', event => {
+      if (addButton.className === 'add-icon') {
+        addButton.className = 'remove-icon';
+        addButton.setAttribute('src', 'images/minus-sign.svg');
+        var selectedParent = addButton.parentElement;
+        var selectedGrandParent = selectedParent.parentElement;
+        /* data.likedImages.push(selectedGrandParent); */
+
+      } else if (addButton.className === 'remove-icon') {
+        addButton.className = 'add-icon';
+        addButton.setAttribute('src', 'images/plus.svg');
+      }
+    });
+  });
 }
 
-if (data.view === 'page-3') {
+if (data.view === 'add-art-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
   $divPage1.className = 'hidden';
@@ -115,3 +131,10 @@ $homePageEmpty.addEventListener('click', function (event) {
   $homePageFull.className = 'home-page-filled';
   $artList.className = 'art-container-list';
 });
+
+/* var observer = new MutationObserver(addedPlusIcons);
+
+function addedPlusIcons(event) {
+  var $addIcons = document.querySelectorAll('.add-icon');
+  console.log($addIcons);
+} */

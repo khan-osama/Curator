@@ -33,8 +33,7 @@ window.addEventListener('beforeunload', function (event) {
   localStorage.setItem('view-data', dataJSON);
 });
 
-// Fetch API data on session and refresh
-
+// Create DOM Tree for art elements
 function createArtPieces(event) {
 
   var newDivColumnHalf = document.createElement('div');
@@ -72,6 +71,8 @@ function createArtPieces(event) {
 
   $artList.appendChild($artAddDivRow);
 }
+
+// Fetch API data on session and refresh
 
 function fetchData(data) {
   var $selectedCentury = document.querySelector('.century-onclick');
@@ -134,5 +135,4 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
   xhr.send();
-
 });
