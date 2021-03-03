@@ -8,6 +8,8 @@ var $centuryButtons = document.querySelectorAll('.century');
 var $nextButton = document.querySelector('.next-button');
 var $artButton = document.querySelector('#next');
 var $backButton = document.querySelector('#previous');
+var $artList = document.querySelector('.art-container-list');
+var $artAddDivRow = document.querySelector('.art-adding-page-row');
 
 $gstart.addEventListener('click', changeToArtPeriod);
 
@@ -23,6 +25,8 @@ $centuryButtons.forEach(item => {
   item.addEventListener('click', event => {
     if (item.className === 'century') {
       item.className = 'century-onclick';
+      var centurySelectedData = document.querySelector('.century-onclick');
+      data.centuryPicked = centurySelectedData.innerHTML;
       $nextButton.className = 'next-button';
     } else {
       item.className = 'century';
@@ -30,7 +34,6 @@ $centuryButtons.forEach(item => {
     }
   });
 });
-
 if (data.view === 'art-periods-row') {
   $body.className = 'art-period-bg';
   $divPage1.className = 'hidden row';
@@ -64,11 +67,66 @@ function changeToAddArtPage(event) {
   $divPage3.className = 'hidden confirmation-page';
   $divPage4.className = 'page4';
   data.view = 'add-art-page';
+  var $addIcons = document.querySelectorAll('.add-icon');
+  console.log($addIcons);
+  $addIcons.forEach(function likeDislike(addButton) {
+    addButton.addEventListener('click', function changePlusIcon(event) {
+      if (addButton.className === 'add-icon') {
+        addButton.className = 'remove-icon';
+        addButton.setAttribute('src', 'images/minus-sign.svg');
+        var selectedParent = addButton.parentElement;
+        var selectedGrandParent = selectedParent.parentElement;
+
+      } else if (addButton.className === 'remove-icon') {
+        addButton.className = 'add-icon';
+        addButton.setAttribute('src', 'images/plus.svg');
+      }
+    });
+  });
 }
 
 if (data.view === 'add-art-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
+  $divPage1.className = 'hidden';
   $divPage3.className = 'hidden confirmation-page';
   $divPage4.className = 'add-art-page';
 }
+
+// navigation pane
+var $homePageEmpty = document.querySelector('.home-page-empty');
+var $homePageFull = document.querySelector('.home-page-filled');
+var $searchEmpty = document.querySelector('.search-empty');
+var $searchFull = document.querySelector('.search-filled');
+var $heartEmpty = document.querySelector('.heart-empty');
+var $heartFull = document.querySelector('.heart-filled');
+
+function resetIcons(reset) {
+  $homePageFull.className = 'hidden';
+  $searchFull.className = 'hidden';
+  $heartFull.className = 'hidden';
+  $homePageEmpty.className = 'home-page-empty';
+  $searchEmpty.className = 'search-empty';
+  $heartEmpty.className = 'heart-empty';
+}
+
+$searchEmpty.addEventListener('click', function (event) {
+  resetIcons();
+  $searchEmpty.className = 'hidden';
+  $searchFull.className = 'search-filled';
+  $artList.className = 'hidden';
+});
+
+$heartEmpty.addEventListener('click', function (event) {
+  resetIcons();
+  $heartEmpty.className = 'hidden';
+  $heartFull.className = 'heart-filled';
+  $artList.className = 'hidden';
+});
+
+$homePageEmpty.addEventListener('click', function (event) {
+  resetIcons();
+  $homePageEmpty.className = 'hidden';
+  $homePageFull.className = 'home-page-filled';
+  $artList.className = 'art-container-list';
+});

@@ -16,7 +16,9 @@
   margin-bottom: 0;
 }
 
-.subtitle {
+.subtitle,
+.artist-name-header,
+.art-name-year {
   font-family: 'Playfair Display', serif;
   font-weight: lighter;
   font-size: 1.1rem;
@@ -153,4 +155,50 @@ header h1 {
 
 .check {
   padding-bottom: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+li img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.artist-name-header {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.art-name-year {
+  margin-top: 5px;
+  font-size: 0.7rem;
+}
+
+.home-page-filled {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(272deg) brightness(0%) contrast(112%);
+}
+
+.add-icon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+h2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-icon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
 }

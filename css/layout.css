@@ -42,3 +42,41 @@
 .column-full-confirmation-page {
   height: 90%;
 }
+
+.art-adding-page-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.art-container-list {
+  padding-inline-start: 0;
+}
+
+.column-half {
+  display: flex;
+  margin: 15px;
+  flex-basis: 40%;
+  height: fit-content;
+}
+
+li {
+  height: fit-content;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid black;
+}
+
+.navbar img {
+  width: 30px;
+  height: 30px;
+  margin: 5px 20px;
+  cursor: pointer;
+}
