@@ -69,14 +69,13 @@ function changeToAddArtPage(event) {
   data.view = 'add-art-page';
   var $addIcons = document.querySelectorAll('.add-icon');
   console.log($addIcons);
-  $addIcons.forEach(addButton => {
-    addButton.addEventListener('click', event => {
+  $addIcons.forEach(function likeDislike(addButton) {
+    addButton.addEventListener('click', function changePlusIcon(event) {
       if (addButton.className === 'add-icon') {
         addButton.className = 'remove-icon';
         addButton.setAttribute('src', 'images/minus-sign.svg');
         var selectedParent = addButton.parentElement;
         var selectedGrandParent = selectedParent.parentElement;
-        /* data.likedImages.push(selectedGrandParent); */
 
       } else if (addButton.className === 'remove-icon') {
         addButton.className = 'add-icon';
@@ -131,10 +130,3 @@ $homePageEmpty.addEventListener('click', function (event) {
   $homePageFull.className = 'home-page-filled';
   $artList.className = 'art-container-list';
 });
-
-/* var observer = new MutationObserver(addedPlusIcons);
-
-function addedPlusIcons(event) {
-  var $addIcons = document.querySelectorAll('.add-icon');
-  console.log($addIcons);
-} */
