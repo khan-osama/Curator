@@ -207,16 +207,16 @@ $homePageEmpty.addEventListener('click', function (event) {
 
 // Data fetching
 function artDetails(objectNum) {
-  var xhrTwo = new XMLHttpRequest();
-  xhrTwo.open('GET', 'https://www.rijksmuseum.nl/api/en/collection/' + objectNum + '?key=Rgcbm689');
-  xhrTwo.responseType = 'json';
-  xhrTwo.addEventListener('load', function () {
-    console.log(xhrTwo.status);
-    console.log(xhrTwo.response);
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection/' + objectNum + '?key=Rgcbm689');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
     var boldHeader = document.createElement('b');
     var descriptionSpan = document.createElement('span');
 
-    var artDescription = xhrTwo.response.artObject.plaqueDescriptionEnglish;
+    var artDescription = xhr.response.artObject.plaqueDescriptionEnglish;
     var descriptionNode = document.querySelector('#viewedArt > p.art-description');
 
     boldHeader.textContent = 'Description: ';
@@ -226,7 +226,7 @@ function artDetails(objectNum) {
     descriptionNode.appendChild(descriptionSpan);
   });
 
-  xhrTwo.send();
+  xhr.send();
 }
 
 function fetchData(data) {
