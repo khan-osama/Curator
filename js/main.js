@@ -10,6 +10,8 @@ var $artButton = document.querySelector('#next');
 var $backButton = document.querySelector('#previous');
 var $artList = document.querySelector('.art-container-list');
 var $artAddDivRow = document.querySelector('.art-adding-page-row');
+var $artViewPage = document.querySelector('.view-art-page');
+var $displayColumn = document.querySelector('.display-column');
 
 $gstart.addEventListener('click', changeToArtPeriod);
 
@@ -68,7 +70,17 @@ function changeToAddArtPage(event) {
   $divPage4.className = 'page4';
   data.view = 'add-art-page';
   var $addIcons = document.querySelectorAll('.add-icon');
-  console.log($addIcons);
+  var $artPictures = document.querySelectorAll('li > img');
+  $artPictures.forEach(function viewPage(event) {
+    event.addEventListener('click', function hideList(click) {
+      $artList.className = 'hidden';
+      $artViewPage.className = 'view-art-page';
+      var clonedNode = event.parentNode.cloneNode(true);
+      clonedNode.setAttribute('id', 'viewedArt');
+      $displayColumn.appendChild(clonedNode);
+    });
+  });
+
   $addIcons.forEach(function likeDislike(addButton) {
     addButton.addEventListener('click', function changePlusIcon(event) {
       if (addButton.className === 'add-icon') {
@@ -85,7 +97,7 @@ function changeToAddArtPage(event) {
   });
 }
 
-if (data.view === 'add-art-page') {
+if (data.view === 'page-3') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
   $divPage1.className = 'hidden';
@@ -115,6 +127,12 @@ $searchEmpty.addEventListener('click', function (event) {
   $searchEmpty.className = 'hidden';
   $searchFull.className = 'search-filled';
   $artList.className = 'hidden';
+  $artViewPage.className = 'hidden';
+
+  var lastArtNode = document.getElementById('viewedArt');
+  if (lastArtNode !== null) {
+    lastArtNode.remove();
+  }
 });
 
 $heartEmpty.addEventListener('click', function (event) {
@@ -122,6 +140,12 @@ $heartEmpty.addEventListener('click', function (event) {
   $heartEmpty.className = 'hidden';
   $heartFull.className = 'heart-filled';
   $artList.className = 'hidden';
+  $artViewPage.className = 'hidden';
+
+  var lastArtNode = document.getElementById('viewedArt');
+  if (lastArtNode !== null) {
+    lastArtNode.remove();
+  }
 });
 
 $homePageEmpty.addEventListener('click', function (event) {
@@ -129,4 +153,9 @@ $homePageEmpty.addEventListener('click', function (event) {
   $homePageEmpty.className = 'hidden';
   $homePageFull.className = 'home-page-filled';
   $artList.className = 'art-container-list';
+
+  var lastArtNode = document.getElementById('viewedArt');
+  if (lastArtNode !== null) {
+    lastArtNode.remove();
+  }
 });
