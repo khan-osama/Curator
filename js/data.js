@@ -1,11 +1,4 @@
 /* exported data */
-var xhr = new XMLHttpRequest();
-var $nextButton = document.querySelector('.next-button');
-
-$nextButton.addEventListener('click', fetchData);
-
-var xhrTwo = new XMLHttpRequest();
-
 var data = {
   view: 'home-page',
   centuryPicked: null,
