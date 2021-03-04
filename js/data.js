@@ -1,8 +1,9 @@
 /* exported data */
+
 var data = {
   view: 'home-page',
   centuryPicked: null,
-  likedImages: []
+  likedArt: []
 };
 
 var previousDataJSON = localStorage.getItem('view-data');
@@ -11,6 +12,7 @@ if (previousDataJSON !== null) {
 }
 
 window.addEventListener('beforeunload', function (event) {
+  localStorage.clear();
   var dataJSON = JSON.stringify(data);
   localStorage.setItem('view-data', dataJSON);
 });

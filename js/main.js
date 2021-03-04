@@ -132,8 +132,19 @@ function changeToAddArtPage(event) {
         addButton.className = 'remove-icon';
         addButton.setAttribute('src', 'images/minus-sign.svg');
         var selectedParent = addButton.parentElement;
-        var selectedGrandParent = selectedParent.parentElement;
 
+        var artistNameGrab = addButton.parentElement.textContent;
+        var imageURLGrab = selectedParent.parentElement.firstChild.src;
+        var artIdGrab = selectedParent.parentElement.firstChild.id;
+        var artTitleGrab = selectedParent.parentElement.childNodes[2].textContent;
+
+        var likedArtObject = {
+          imageURL: imageURLGrab,
+          artId: artIdGrab,
+          artistName: artistNameGrab,
+          artTitle: artTitleGrab
+        };
+        data.likedArt.unshift(likedArtObject);
       } else if (addButton.className === 'remove-icon') {
         addButton.className = 'add-icon';
         addButton.setAttribute('src', 'images/plus.svg');
