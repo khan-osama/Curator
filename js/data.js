@@ -12,11 +12,17 @@ function artDetails(objectNum) {
   xhrTwo.addEventListener('load', function () {
     console.log(xhrTwo.status);
     console.log(xhrTwo.response);
+    var boldHeader = document.createElement('b');
+    var descriptionSpan = document.createElement('span');
+
     var artDescription = xhrTwo.response.artObject.plaqueDescriptionEnglish;
-    var DescriptionNode = document.querySelector('#viewedArt > p.art-description');
+    var descriptionNode = document.querySelector('#viewedArt > p.art-description');
 
-    DescriptionNode.innerHTML = '<b>Description:</b> ' + artDescription;
+    boldHeader.textContent = 'Description: ';
+    descriptionSpan.textContent = artDescription;
 
+    descriptionNode.appendChild(boldHeader);
+    descriptionNode.appendChild(descriptionSpan);
   });
 
   xhrTwo.send();
