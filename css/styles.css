@@ -18,7 +18,8 @@
 
 .subtitle,
 .artist-name-header,
-.art-name-year {
+.art-name-year,
+.art-description {
   font-family: 'Playfair Display', serif;
   font-weight: lighter;
   font-size: 1.1rem;
@@ -173,7 +174,8 @@ li img {
   font-weight: 800;
 }
 
-.art-name-year {
+.art-name-year,
+.art-description {
   margin-top: 5px;
   font-size: 0.7rem;
 }
@@ -201,4 +203,8 @@ h2 {
   display: flex;
   justify-content: flex-end;
   align-content: flex-end;
+}
+
+.art-description {
+  margin-bottom: 40px;
 }

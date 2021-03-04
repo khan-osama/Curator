@@ -10,8 +10,54 @@ var $artButton = document.querySelector('#next');
 var $backButton = document.querySelector('#previous');
 var $artList = document.querySelector('.art-container-list');
 var $artAddDivRow = document.querySelector('.art-adding-page-row');
+var $artViewPage = document.querySelector('.view-art-page');
+var $displayColumn = document.querySelector('.display-column');
 
+$nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
+
+// Create DOM tree
+function createArtPieces(event) {
+
+  var newDivColumnHalf = document.createElement('div');
+  var newLi = document.createElement('li');
+  var newArtImg = document.createElement('img');
+  var newArtArtist = document.createElement('h2');
+  var newArtTitleYear = document.createElement('p');
+  var newItalics = document.createElement('i');
+  var addArtIcon = document.createElement('img');
+  var newArtDescription = document.createElement('p');
+
+  newDivColumnHalf.className = 'column-half';
+  newArtArtist.className = 'artist-name-header';
+  newArtTitleYear.className = 'art-name-year';
+  newArtDescription.className = 'art-description';
+
+  newArtImg.setAttribute('id', event.objectNumber);
+  newArtImg.setAttribute('src', event.webImage.url);
+  addArtIcon.setAttribute('src', 'images/plus.svg');
+  addArtIcon.className = 'add-icon';
+
+  newArtArtist.textContent = event.principalOrFirstMaker;
+  newItalics.textContent = event.title;
+  var artYearString = event.longTitle.match(/\d/g);
+  var artYearStringJoin = artYearString.join('');
+  artYearStringJoin = artYearStringJoin.substring(0, 4);
+  newArtTitleYear.textContent = ', ' + artYearStringJoin;
+
+  $artAddDivRow.appendChild(newDivColumnHalf);
+  newDivColumnHalf.appendChild(newLi);
+  newArtArtist.appendChild(addArtIcon);
+  newLi.appendChild(newArtImg);
+  newLi.appendChild(newArtArtist);
+  newLi.appendChild(newArtTitleYear);
+  newLi.appendChild(newArtDescription);
+
+  var firstChild = newArtTitleYear.firstChild;
+  newArtTitleYear.insertBefore(newItalics, firstChild);
+
+  $artList.appendChild($artAddDivRow);
+}
 
 function changeToArtPeriod(event) {
   $body.className = 'art-period-bg';
@@ -68,7 +114,18 @@ function changeToAddArtPage(event) {
   $divPage4.className = 'page4';
   data.view = 'add-art-page';
   var $addIcons = document.querySelectorAll('.add-icon');
-  console.log($addIcons);
+  var $artPictures = document.querySelectorAll('li > img');
+  $artPictures.forEach(function viewPage(event) {
+    event.addEventListener('click', function hideList(click) {
+      $artList.className = 'hidden';
+      $artViewPage.className = 'view-art-page';
+      var clonedNode = event.parentNode.cloneNode(true);
+      clonedNode.setAttribute('id', 'viewedArt');
+      $displayColumn.appendChild(clonedNode);
+      artDetails(event.id);
+    });
+  });
+
   $addIcons.forEach(function likeDislike(addButton) {
     addButton.addEventListener('click', function changePlusIcon(event) {
       if (addButton.className === 'add-icon') {
@@ -85,7 +142,7 @@ function changeToAddArtPage(event) {
   });
 }
 
-if (data.view === 'add-art-page') {
+if (data.view === 'page-3') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
   $divPage1.className = 'hidden';
@@ -115,6 +172,12 @@ $searchEmpty.addEventListener('click', function (event) {
   $searchEmpty.className = 'hidden';
   $searchFull.className = 'search-filled';
   $artList.className = 'hidden';
+  $artViewPage.className = 'hidden';
+
+  var lastArtNode = document.getElementById('viewedArt');
+  if (lastArtNode !== null) {
+    lastArtNode.remove();
+  }
 });
 
 $heartEmpty.addEventListener('click', function (event) {
@@ -122,6 +185,12 @@ $heartEmpty.addEventListener('click', function (event) {
   $heartEmpty.className = 'hidden';
   $heartFull.className = 'heart-filled';
   $artList.className = 'hidden';
+  $artViewPage.className = 'hidden';
+
+  var lastArtNode = document.getElementById('viewedArt');
+  if (lastArtNode !== null) {
+    lastArtNode.remove();
+  }
 });
 
 $homePageEmpty.addEventListener('click', function (event) {
@@ -129,4 +198,98 @@ $homePageEmpty.addEventListener('click', function (event) {
   $homePageEmpty.className = 'hidden';
   $homePageFull.className = 'home-page-filled';
   $artList.className = 'art-container-list';
+
+  var lastArtNode = document.getElementById('viewedArt');
+  if (lastArtNode !== null) {
+    lastArtNode.remove();
+  }
+});
+
+// Data fetching
+function artDetails(objectNum) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection/' + objectNum + '?key=Rgcbm689');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
+    var boldHeader = document.createElement('b');
+    var descriptionSpan = document.createElement('span');
+
+    var artDescription = xhr.response.artObject.plaqueDescriptionEnglish;
+    var descriptionNode = document.querySelector('#viewedArt > p.art-description');
+
+    boldHeader.textContent = 'Description: ';
+    descriptionSpan.textContent = artDescription;
+
+    descriptionNode.appendChild(boldHeader);
+    descriptionNode.appendChild(descriptionSpan);
+  });
+
+  xhr.send();
+}
+
+function fetchData(data) {
+  var xhr = new XMLHttpRequest();
+  var $selectedCentury = document.querySelector('.century-onclick');
+  if ($selectedCentury.innerHTML === '16th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=16&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '17th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=17&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '18th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=18&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '19th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=19&ps=100');
+  }
+  if ($selectedCentury.innerHTML === '20th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=20&ps=100');
+  }
+  if ($selectedCentury.innerHTML === 'Contemporary') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=21&ps=100');
+  }
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
+    for (var i = 0; i < xhr.response.artObjects.length; i++) {
+      createArtPieces(xhr.response.artObjects[i]);
+    }
+  });
+
+  xhr.send();
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  var xhr = new XMLHttpRequest();
+  if (data.centuryPicked === '16th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=16&ps=100');
+  }
+  if (data.centuryPicked === '17th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=17&ps=100');
+  }
+  if (data.centuryPicked === '18th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=18&ps=100');
+  }
+  if (data.centuryPicked === '19th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=19&ps=100');
+  }
+  if (data.centuryPicked === '20th century') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=20&ps=100');
+  }
+  if (data.centuryPicked === 'Contemporary') {
+    xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=21&ps=100');
+  }
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
+    for (var i = 0; i < xhr.response.artObjects.length; i++) {
+      createArtPieces(xhr.response.artObjects[i]);
+    }
+  });
+
+  xhr.send();
 });
