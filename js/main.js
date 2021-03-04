@@ -15,6 +15,48 @@ var $displayColumn = document.querySelector('.display-column');
 
 $gstart.addEventListener('click', changeToArtPeriod);
 
+function createArtPieces(event) {
+
+  var newDivColumnHalf = document.createElement('div');
+  var newLi = document.createElement('li');
+  var newArtImg = document.createElement('img');
+  var newArtArtist = document.createElement('h2');
+  var newArtTitleYear = document.createElement('p');
+  var newItalics = document.createElement('i');
+  var addArtIcon = document.createElement('img');
+  var newArtDescription = document.createElement('p');
+
+  newDivColumnHalf.className = 'column-half';
+  newArtArtist.className = 'artist-name-header';
+  newArtTitleYear.className = 'art-name-year';
+  newArtDescription.className = 'art-description';
+
+  newArtImg.setAttribute('id', event.objectNumber);
+  newArtImg.setAttribute('src', event.webImage.url);
+  addArtIcon.setAttribute('src', 'images/plus.svg');
+  addArtIcon.className = 'add-icon';
+
+  newArtArtist.textContent = event.principalOrFirstMaker;
+  newItalics.textContent = event.title;
+  var artYearString = event.longTitle.match(/\d/g);
+  var artYearStringJoin = artYearString.join('');
+  artYearStringJoin = artYearStringJoin.substring(0, 4);
+  newArtTitleYear.textContent = ', ' + artYearStringJoin;
+
+  $artAddDivRow.appendChild(newDivColumnHalf);
+  newDivColumnHalf.appendChild(newLi);
+  newArtArtist.appendChild(addArtIcon);
+  newLi.appendChild(newArtImg);
+  newLi.appendChild(newArtArtist);
+  newLi.appendChild(newArtTitleYear);
+  newLi.appendChild(newArtDescription);
+
+  var firstChild = newArtTitleYear.firstChild;
+  newArtTitleYear.insertBefore(newItalics, firstChild);
+
+  $artList.appendChild($artAddDivRow);
+}
+
 function changeToArtPeriod(event) {
   $body.className = 'art-period-bg';
   $divPage1.className = 'hidden row';
@@ -79,12 +121,6 @@ function changeToAddArtPage(event) {
       clonedNode.setAttribute('id', 'viewedArt');
       $displayColumn.appendChild(clonedNode);
       artDetails(event.id);
-      setTimeout(function () {
-        var artDescription = xhrTwo.response.artObject.plaqueDescriptionEnglish;
-        var DescriptionNode = clonedNode.lastChild;
-        DescriptionNode.innerHTML = '<b>Description:</b> ' + artDescription;
-
-      }, 1000);
     });
   });
 
