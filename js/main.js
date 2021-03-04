@@ -13,9 +13,6 @@ var $artAddDivRow = document.querySelector('.art-adding-page-row');
 var $artViewPage = document.querySelector('.view-art-page');
 var $displayColumn = document.querySelector('.display-column');
 
-var xhr = new XMLHttpRequest();
-var xhrTwo = new XMLHttpRequest();
-
 $nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
 
@@ -210,6 +207,7 @@ $homePageEmpty.addEventListener('click', function (event) {
 
 // Data fetching
 function artDetails(objectNum) {
+  var xhrTwo = new XMLHttpRequest();
   xhrTwo.open('GET', 'https://www.rijksmuseum.nl/api/en/collection/' + objectNum + '?key=Rgcbm689');
   xhrTwo.responseType = 'json';
   xhrTwo.addEventListener('load', function () {
@@ -232,6 +230,7 @@ function artDetails(objectNum) {
 }
 
 function fetchData(data) {
+  var xhr = new XMLHttpRequest();
   var $selectedCentury = document.querySelector('.century-onclick');
   if ($selectedCentury.innerHTML === '16th century') {
     xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=16&ps=100');
@@ -264,6 +263,7 @@ function fetchData(data) {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
+  var xhr = new XMLHttpRequest();
   if (data.centuryPicked === '16th century') {
     xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection?key=Rgcbm689&f.dating.period=16&ps=100');
   }
