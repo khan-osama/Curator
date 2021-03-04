@@ -78,6 +78,13 @@ function changeToAddArtPage(event) {
       var clonedNode = event.parentNode.cloneNode(true);
       clonedNode.setAttribute('id', 'viewedArt');
       $displayColumn.appendChild(clonedNode);
+      artDetails(event.id);
+      setTimeout(function () {
+        var artDescription = xhrTwo.response.artObject.plaqueDescriptionEnglish;
+        var DescriptionNode = clonedNode.lastChild;
+        DescriptionNode.innerHTML = '<b>Description:</b> ' + artDescription;
+
+      }, 800);
     });
   });
 

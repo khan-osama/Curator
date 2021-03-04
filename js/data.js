@@ -43,11 +43,14 @@ function createArtPieces(event) {
   var newArtTitleYear = document.createElement('p');
   var newItalics = document.createElement('i');
   var addArtIcon = document.createElement('img');
+  var newArtDescription = document.createElement('p');
 
   newDivColumnHalf.className = 'column-half';
   newArtArtist.className = 'artist-name-header';
   newArtTitleYear.className = 'art-name-year';
+  newArtDescription.className = 'art-description';
 
+  newArtImg.setAttribute('id', event.objectNumber);
   newArtImg.setAttribute('src', event.webImage.url);
   addArtIcon.setAttribute('src', 'images/plus.svg');
   addArtIcon.className = 'add-icon';
@@ -65,6 +68,7 @@ function createArtPieces(event) {
   newLi.appendChild(newArtImg);
   newLi.appendChild(newArtArtist);
   newLi.appendChild(newArtTitleYear);
+  newLi.appendChild(newArtDescription);
 
   var firstChild = newArtTitleYear.firstChild;
   newArtTitleYear.insertBefore(newItalics, firstChild);
