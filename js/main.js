@@ -84,7 +84,7 @@ function changeToAddArtPage(event) {
         var DescriptionNode = clonedNode.lastChild;
         DescriptionNode.innerHTML = '<b>Description:</b> ' + artDescription;
 
-      }, 800);
+      }, 1000);
     });
   });
 
