@@ -97,7 +97,7 @@ function createSavedArtPieces(event) {
   var firstChild = newArtTitleYear.firstChild;
   newArtTitleYear.insertBefore(newItalics, firstChild);
 
-  $savedArtList.appendChild($savedArtAddDivRow);
+  return $savedArtAddDivRow;
 }
 
 function changeToArtPeriod(event) {
@@ -261,7 +261,7 @@ $heartEmpty.addEventListener('click', function (event) {
     });
   }
   for (var i = 0; i < data.likedArt.length; i++) {
-    createSavedArtPieces(data.likedArt[i]);
+    $savedArtList.appendChild(createSavedArtPieces(data.likedArt[i]));
   }
 
   var $removeIcons = document.querySelectorAll('.remove-icon');
