@@ -1,8 +1,9 @@
 /* exported data */
+
 var data = {
   view: 'home-page',
   centuryPicked: null,
-  likedImages: []
+  likedArt: []
 };
 
 var previousDataJSON = localStorage.getItem('view-data');

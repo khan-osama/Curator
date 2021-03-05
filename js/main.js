@@ -12,6 +12,9 @@ var $artList = document.querySelector('.art-container-list');
 var $artAddDivRow = document.querySelector('.art-adding-page-row');
 var $artViewPage = document.querySelector('.view-art-page');
 var $displayColumn = document.querySelector('.display-column');
+var $savedArtList = document.querySelector('.saved-art-container-list');
+var $savedArtAddDivRow = document.querySelector('.saved-art-adding-page-row');
+var $savedArtViewPage = document.querySelector('.saved-art-page');
 
 $nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
@@ -57,6 +60,44 @@ function createArtPieces(event) {
   newArtTitleYear.insertBefore(newItalics, firstChild);
 
   $artList.appendChild($artAddDivRow);
+}
+
+function createSavedArtPieces(event) {
+
+  var newDivColumnHalf = document.createElement('div');
+  var newLi = document.createElement('li');
+  var newArtImg = document.createElement('img');
+  var newArtArtist = document.createElement('h2');
+  var newArtTitleYear = document.createElement('p');
+  var newItalics = document.createElement('i');
+  var addArtIcon = document.createElement('img');
+  var newArtDescription = document.createElement('p');
+
+  newDivColumnHalf.className = 'column-half';
+  newArtArtist.className = 'artist-name-header';
+  newArtTitleYear.className = 'art-name-year';
+  newArtDescription.className = 'art-description';
+
+  newArtImg.setAttribute('id', event.artId);
+  newArtImg.setAttribute('src', event.imageURL);
+  addArtIcon.setAttribute('src', 'images/minus-sign.svg');
+  addArtIcon.className = 'remove-icon';
+
+  newArtArtist.textContent = event.artistName;
+  newItalics.textContent = event.artTitle;
+
+  $savedArtAddDivRow.appendChild(newDivColumnHalf);
+  newDivColumnHalf.appendChild(newLi);
+  newArtArtist.appendChild(addArtIcon);
+  newLi.appendChild(newArtImg);
+  newLi.appendChild(newArtArtist);
+  newLi.appendChild(newArtTitleYear);
+  newLi.appendChild(newArtDescription);
+
+  var firstChild = newArtTitleYear.firstChild;
+  newArtTitleYear.insertBefore(newItalics, firstChild);
+
+  return $savedArtAddDivRow;
 }
 
 function changeToArtPeriod(event) {
@@ -132,11 +173,23 @@ function changeToAddArtPage(event) {
         addButton.className = 'remove-icon';
         addButton.setAttribute('src', 'images/minus-sign.svg');
         var selectedParent = addButton.parentElement;
-        var selectedGrandParent = selectedParent.parentElement;
 
+        var artistNameGrab = addButton.parentElement.textContent;
+        var imageURLGrab = selectedParent.parentElement.firstChild.src;
+        var artIdGrab = selectedParent.parentElement.firstChild.id;
+        var artTitleGrab = selectedParent.parentElement.childNodes[2].textContent;
+
+        var likedArtObject = {
+          imageURL: imageURLGrab,
+          artId: artIdGrab,
+          artistName: artistNameGrab,
+          artTitle: artTitleGrab
+        };
+        data.likedArt.unshift(likedArtObject);
       } else if (addButton.className === 'remove-icon') {
         addButton.className = 'add-icon';
         addButton.setAttribute('src', 'images/plus.svg');
+        data.likedArt.shift();
       }
     });
   });
@@ -178,6 +231,13 @@ $searchEmpty.addEventListener('click', function (event) {
   if (lastArtNode !== null) {
     lastArtNode.remove();
   }
+  var savedArtNodes = document.querySelectorAll('div.saved-art-page > main > ul > div > div');
+  console.log(savedArtNodes);
+  if (savedArtNodes !== null) {
+    savedArtNodes.forEach(function (nodes) {
+      nodes.remove();
+    });
+  }
 });
 
 $heartEmpty.addEventListener('click', function (event) {
@@ -186,11 +246,45 @@ $heartEmpty.addEventListener('click', function (event) {
   $heartFull.className = 'heart-filled';
   $artList.className = 'hidden';
   $artViewPage.className = 'hidden';
+  $savedArtViewPage.className = 'saved-art-page';
 
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
     lastArtNode.remove();
   }
+
+  var savedArtNodes = document.querySelectorAll('div.saved-art-page > main > ul > div > div');
+  console.log(savedArtNodes);
+  if (savedArtNodes !== null) {
+    savedArtNodes.forEach(function (nodes) {
+      nodes.remove();
+    });
+  }
+  for (var i = 0; i < data.likedArt.length; i++) {
+    $savedArtList.appendChild(createSavedArtPieces(data.likedArt[i]));
+  }
+
+  var $removeIcons = document.querySelectorAll('.remove-icon');
+  var $savedArtPictures = document.querySelectorAll('div.saved-art-page > main > ul > div > div > li > img');
+  $savedArtPictures.forEach(function viewPage(event) {
+    event.addEventListener('click', function hideList(click) {
+      $artList.className = 'hidden';
+      $savedArtViewPage.className = 'hidden';
+      $artViewPage.className = 'view-art-page';
+      var clonedNode = event.parentNode.cloneNode(true);
+      clonedNode.setAttribute('id', 'viewedArt');
+      $displayColumn.appendChild(clonedNode);
+      artDetails(event.id);
+    });
+  });
+  $removeIcons.forEach(function Dislike(removeButton) {
+    removeButton.addEventListener('click', function changeMinusIcon(event) {
+      if (removeButton.className === 'remove-icon') {
+        removeButton.className = 'add-icon';
+        removeButton.setAttribute('src', 'images/plus.svg');
+      }
+    });
+  });
 });
 
 $homePageEmpty.addEventListener('click', function (event) {
