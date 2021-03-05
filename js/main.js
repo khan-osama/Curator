@@ -15,6 +15,7 @@ var $displayColumn = document.querySelector('.display-column');
 var $savedArtList = document.querySelector('.saved-art-container-list');
 var $savedArtAddDivRow = document.querySelector('.saved-art-adding-page-row');
 var $savedArtViewPage = document.querySelector('.saved-art-page');
+var $searchArtistPage = document.querySelector('.search-artist-page');
 
 $nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
@@ -195,7 +196,7 @@ function changeToAddArtPage(event) {
   });
 }
 
-if (data.view === 'page-3') {
+if (data.view === 'add-art-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
   $divPage1.className = 'hidden';
@@ -226,13 +227,12 @@ $searchEmpty.addEventListener('click', function (event) {
   $searchFull.className = 'search-filled';
   $artList.className = 'hidden';
   $artViewPage.className = 'hidden';
-
+  $searchArtistPage.className = 'search-artist-page';
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
     lastArtNode.remove();
   }
   var savedArtNodes = document.querySelectorAll('div.saved-art-page > main > ul > div > div');
-  console.log(savedArtNodes);
   if (savedArtNodes !== null) {
     savedArtNodes.forEach(function (nodes) {
       nodes.remove();
@@ -247,7 +247,6 @@ $heartEmpty.addEventListener('click', function (event) {
   $artList.className = 'hidden';
   $artViewPage.className = 'hidden';
   $savedArtViewPage.className = 'saved-art-page';
-
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
     lastArtNode.remove();

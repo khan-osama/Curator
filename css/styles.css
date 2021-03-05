@@ -19,7 +19,8 @@
 .subtitle,
 .artist-name-header,
 .art-name-year,
-.art-description {
+.art-description,
+.search-bar {
   font-family: 'Playfair Display', serif;
   font-weight: lighter;
   font-size: 1.1rem;
@@ -207,4 +208,15 @@ h2 {
 
 .art-description {
   margin-bottom: 40px;
+}
+
+.search-bar {
+  border-radius: 20px;
+  padding: 10px 30px;
+  outline: none;
+}
+
+.search-bar::placeholder {
+  font-style: italic;
+  text-align: center;
 }
