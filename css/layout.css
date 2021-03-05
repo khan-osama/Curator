@@ -43,13 +43,15 @@
   height: 90%;
 }
 
-.art-adding-page-row {
+.art-adding-page-row,
+.saved-art-adding-page-row {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.art-container-list {
+.art-container-list,
+.saved-art-container-list {
   padding-inline-start: 0;
 }
 
