@@ -16,6 +16,7 @@ var $savedArtList = document.querySelector('.saved-art-container-list');
 var $savedArtAddDivRow = document.querySelector('.saved-art-adding-page-row');
 var $savedArtViewPage = document.querySelector('.saved-art-page');
 var $searchArtistPage = document.querySelector('.search-artist-page');
+var $searchBar = document.querySelector('.search-bar');
 
 $nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
@@ -247,6 +248,8 @@ $heartEmpty.addEventListener('click', function (event) {
   $artList.className = 'hidden';
   $artViewPage.className = 'hidden';
   $savedArtViewPage.className = 'saved-art-page';
+  $searchBar.className = 'search-bar';
+
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
     lastArtNode.remove();
@@ -291,10 +294,18 @@ $homePageEmpty.addEventListener('click', function (event) {
   $homePageEmpty.className = 'hidden';
   $homePageFull.className = 'home-page-filled';
   $artList.className = 'art-container-list';
+  $searchBar.className = 'hidden';
 
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
     lastArtNode.remove();
+  }
+});
+
+// Search page functionality
+document.addEventListener('keyup', function (event) {
+  if (event.code === 'Enter') {
+    $searchBar.className = 'hidden';
   }
 });
 
