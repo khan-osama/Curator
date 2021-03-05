@@ -212,11 +212,16 @@ h2 {
 
 .search-bar {
   border-radius: 20px;
-  padding: 10px 30px;
+  padding: 10px 70px;
   outline: none;
+  text-align: center;
 }
 
 .search-bar::placeholder {
   font-style: italic;
   text-align: center;
+}
+
+.search-bar:focus::placeholder {
+  color: transparent;
 }
