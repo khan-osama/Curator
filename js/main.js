@@ -17,6 +17,7 @@ var $savedArtAddDivRow = document.querySelector('.saved-art-adding-page-row');
 var $savedArtViewPage = document.querySelector('.saved-art-page');
 var $searchArtistPage = document.querySelector('.search-artist-page');
 var $searchBar = document.querySelector('.search-bar');
+var $noResults = document.querySelector('.no-results');
 
 $nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
@@ -294,7 +295,7 @@ $homePageEmpty.addEventListener('click', function (event) {
   $homePageEmpty.className = 'hidden';
   $homePageFull.className = 'home-page-filled';
   $artList.className = 'art-container-list';
-  $searchBar.className = 'hidden';
+  $searchBar.className = 'search-bar';
 
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
@@ -306,6 +307,8 @@ $homePageEmpty.addEventListener('click', function (event) {
 document.addEventListener('keyup', function (event) {
   if (event.code === 'Enter') {
     $searchBar.className = 'hidden';
+    var userInputSearch = $searchBar.value;
+    artistSearchAPI(userInputSearch);
   }
 });
 
@@ -397,3 +400,18 @@ window.addEventListener('DOMContentLoaded', function () {
 
   xhr.send();
 });
+
+function artistSearchAPI(involedMaker) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://www.rijksmuseum.nl/api/nl/collection?key=Rgcbm689&ps=30&involvedMaker=' + involedMaker);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
+    if (xhr.response.count === 0) {
+      $noResults.className = 'no-results';
+    }
+  });
+
+  xhr.send();
+}
