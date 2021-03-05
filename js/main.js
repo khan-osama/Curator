@@ -264,7 +264,7 @@ $heartEmpty.addEventListener('click', function (event) {
     createSavedArtPieces(data.likedArt[i]);
   }
 
-  var $addIcons = document.querySelectorAll('.add-icon');
+  var $removeIcons = document.querySelectorAll('.remove-icon');
   var $savedArtPictures = document.querySelectorAll('div.saved-art-page > main > ul > div > div > li > img');
   $savedArtPictures.forEach(function viewPage(event) {
     event.addEventListener('click', function hideList(click) {
@@ -275,6 +275,14 @@ $heartEmpty.addEventListener('click', function (event) {
       clonedNode.setAttribute('id', 'viewedArt');
       $displayColumn.appendChild(clonedNode);
       artDetails(event.id);
+    });
+  });
+  $removeIcons.forEach(function Dislike(removeButton) {
+    removeButton.addEventListener('click', function changeMinusIcon(event) {
+      if (removeButton.className === 'remove-icon') {
+        removeButton.className = 'add-icon';
+        removeButton.setAttribute('src', 'images/plus.svg');
+      }
     });
   });
 });
