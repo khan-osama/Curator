@@ -45,14 +45,16 @@
 }
 
 .art-adding-page-row,
-.saved-art-adding-page-row {
+.saved-art-adding-page-row,
+.searched-art-page-row {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .art-container-list,
-.saved-art-container-list {
+.saved-art-container-list,
+.searched-art-container-list {
   padding-inline-start: 0;
 }
 
