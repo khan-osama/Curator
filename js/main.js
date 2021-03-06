@@ -20,7 +20,6 @@ var $searchBar = document.querySelector('.search-bar');
 var $noResults = document.querySelector('.no-results');
 var $searchPageRow = document.querySelector('.searched-art-page-row');
 var $searchPageList = document.querySelector('.searched-art-container-list');
-var $searchBarDiv = document.querySelector('.search-page-row');
 
 $nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
