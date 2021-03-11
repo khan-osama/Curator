@@ -15,6 +15,11 @@ var $displayColumn = document.querySelector('.display-column');
 var $savedArtList = document.querySelector('.saved-art-container-list');
 var $savedArtAddDivRow = document.querySelector('.saved-art-adding-page-row');
 var $savedArtViewPage = document.querySelector('.saved-art-page');
+var $searchArtistPage = document.querySelector('.search-artist-page');
+var $searchBar = document.querySelector('.search-bar');
+var $noResults = document.querySelector('.no-results');
+var $searchPageRow = document.querySelector('.searched-art-page-row');
+var $searchPageList = document.querySelector('.searched-art-container-list');
 
 $nextButton.addEventListener('click', fetchData);
 $gstart.addEventListener('click', changeToArtPeriod);
@@ -195,7 +200,7 @@ function changeToAddArtPage(event) {
   });
 }
 
-if (data.view === 'page-3') {
+if (data.view === 'add-art-page') {
   $body.className = 'app-bg';
   $gstart.className = 'hidden';
   $divPage1.className = 'hidden';
@@ -226,15 +231,20 @@ $searchEmpty.addEventListener('click', function (event) {
   $searchFull.className = 'search-filled';
   $artList.className = 'hidden';
   $artViewPage.className = 'hidden';
-
+  $searchArtistPage.className = 'search-artist-page';
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
     lastArtNode.remove();
   }
   var savedArtNodes = document.querySelectorAll('div.saved-art-page > main > ul > div > div');
-  console.log(savedArtNodes);
+  var searchedArtNodes = document.querySelectorAll('div.search-artist-page > main > ul > div > div');
   if (savedArtNodes !== null) {
     savedArtNodes.forEach(function (nodes) {
+      nodes.remove();
+    });
+  }
+  if (searchedArtNodes !== null) {
+    searchedArtNodes.forEach(function (nodes) {
       nodes.remove();
     });
   }
@@ -247,6 +257,7 @@ $heartEmpty.addEventListener('click', function (event) {
   $artList.className = 'hidden';
   $artViewPage.className = 'hidden';
   $savedArtViewPage.className = 'saved-art-page';
+  $searchBar.className = 'search-bar';
 
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
@@ -254,9 +265,15 @@ $heartEmpty.addEventListener('click', function (event) {
   }
 
   var savedArtNodes = document.querySelectorAll('div.saved-art-page > main > ul > div > div');
-  console.log(savedArtNodes);
+  var searchedArtNodes = document.querySelectorAll('div.search-artist-page > main > ul > div > div');
+
   if (savedArtNodes !== null) {
     savedArtNodes.forEach(function (nodes) {
+      nodes.remove();
+    });
+  }
+  if (searchedArtNodes !== null) {
+    searchedArtNodes.forEach(function (nodes) {
       nodes.remove();
     });
   }
@@ -292,10 +309,21 @@ $homePageEmpty.addEventListener('click', function (event) {
   $homePageEmpty.className = 'hidden';
   $homePageFull.className = 'home-page-filled';
   $artList.className = 'art-container-list';
+  $searchBar.className = 'search-bar';
 
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
     lastArtNode.remove();
+  }
+});
+
+// Search page functionality
+document.addEventListener('keyup', function (event) {
+  if (event.code === 'Enter') {
+    $searchBar.className = 'hidden';
+    $noResults.className = 'hidden';
+    var userInputSearch = $searchBar.value;
+    artistSearchAPI(userInputSearch);
   }
 });
 
@@ -387,3 +415,67 @@ window.addEventListener('DOMContentLoaded', function () {
 
   xhr.send();
 });
+
+function createSearchedArtPieces(event) {
+
+  var newDivColumnHalf = document.createElement('div');
+  var newLi = document.createElement('li');
+  var newArtImg = document.createElement('img');
+  var newArtArtist = document.createElement('h2');
+  var newArtTitleYear = document.createElement('p');
+  var newItalics = document.createElement('i');
+  var addArtIcon = document.createElement('img');
+  var newArtDescription = document.createElement('p');
+
+  newDivColumnHalf.className = 'column-half';
+  newArtArtist.className = 'artist-name-header';
+  newArtTitleYear.className = 'art-name-year';
+  newArtDescription.className = 'art-description';
+
+  newArtImg.setAttribute('id', event.objectNumber);
+  newArtImg.setAttribute('src', event.webImage.url);
+  addArtIcon.setAttribute('src', 'images/plus.svg');
+  addArtIcon.className = 'add-icon';
+
+  newArtArtist.textContent = event.principalOrFirstMaker;
+  newItalics.textContent = event.title;
+
+  newArtArtist.textContent = event.principalOrFirstMaker;
+  newItalics.textContent = event.title;
+  var artYearString = event.longTitle.match(/\d/g);
+  var artYearStringJoin = artYearString.join('');
+  artYearStringJoin = artYearStringJoin.substring(0, 4);
+  newArtTitleYear.textContent = ', ' + artYearStringJoin;
+
+  $searchPageRow.appendChild(newDivColumnHalf);
+  newDivColumnHalf.appendChild(newLi);
+  newArtArtist.appendChild(addArtIcon);
+  newLi.appendChild(newArtImg);
+  newLi.appendChild(newArtArtist);
+  newLi.appendChild(newArtTitleYear);
+  newLi.appendChild(newArtDescription);
+
+  var firstChild = newArtTitleYear.firstChild;
+  newArtTitleYear.insertBefore(newItalics, firstChild);
+
+  return $searchPageRow;
+}
+
+function artistSearchAPI(involedMaker) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://www.rijksmuseum.nl/api/nl/collection?key=Rgcbm689&ps=30&involvedMaker=' + involedMaker);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
+    for (var i = 0; i < xhr.response.artObjects.length; i++) {
+      $searchPageList.appendChild(createSearchedArtPieces(xhr.response.artObjects[i]));
+    }
+    if (xhr.response.count === 0) {
+      $noResults.className = 'no-results';
+      $searchBar.className = 'search-bar';
+    }
+  });
+
+  xhr.send();
+}
