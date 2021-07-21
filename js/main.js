@@ -258,6 +258,7 @@ $heartEmpty.addEventListener('click', function (event) {
   $artViewPage.className = 'hidden';
   $savedArtViewPage.className = 'saved-art-page';
   $searchBar.className = 'search-bar';
+  $searchArtistPage.className = 'hidden';
 
   var lastArtNode = document.getElementById('viewedArt');
   if (lastArtNode !== null) {
