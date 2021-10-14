@@ -26,6 +26,8 @@ Users are able to search for Pokemon based on Type.
 
 ## Screenshots
 ![curator1](https://user-images.githubusercontent.com/63980419/137366069-b852a6c7-570a-4e55-9824-c10be0ccbb9c.png)
-![curator2](https://user-images.githubusercontent.com/63980419/1
+![curator2](https://user-images.githubusercontent.com/63980419/137366213-9019c7bc-2bbd-4d1e-89ce-89142ac080bb.png)
 ![curator3](https://user-images.githubusercontent.com/63980419/137366128-5572fa6b-51a8-4a97-84bd-621439e44601.png)
-37366082-17733d5f-4376-483d-b26c-1d75958d3a75.png)
+![curator4](https://user-images.githubusercontent.com/63980419/137366229-5ad0bdd7-0be7-4e5a-b939-97eda98686c0.png)
+![curator5](https://user-images.githubusercontent.com/63980419/137366247-1d7a0a98-0db4-43e3-8c95-3dc3816c5251.png)
+![curator6](https://user-images.githubusercontent.com/63980419/137366257-c47b895d-1090-4404-a6c8-dbd97ae7f4fa.png)
