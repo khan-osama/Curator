@@ -25,3 +25,7 @@ Users are able to search for Pokemon based on Type.
 3. The use of data models was essential for this project as it helped me learn how data is kept persistent during a user's browsing session. Data models help with loading the correct data in while also unloading any data that was unnecessary. This was particularly useful with the 'favorites' feature that was implemented.
 
 ## Screenshots
+![curator1](https://user-images.githubusercontent.com/63980419/137366069-b852a6c7-570a-4e55-9824-c10be0ccbb9c.png)
+![curator2](https://user-images.githubusercontent.com/63980419/1
+![curator3](https://user-images.githubusercontent.com/63980419/137366128-5572fa6b-51a8-4a97-84bd-621439e44601.png)
+37366082-17733d5f-4376-483d-b26c-1d75958d3a75.png)
