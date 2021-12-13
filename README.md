@@ -12,9 +12,10 @@ An application that lets the user get art curated recommendations for them based
 6. Users can unsave art and remove from favorite's list.
 
 ## Planned Features
-Users are able to search for more information of their favorite pokemon by clicking the listed pokemon on their Favorites list
-Users are able to make a "Trainer List" of 6 pokemon that they would take on their journey
-Users are able to search for Pokemon based on Type.
+Clean up the UI/UX
+Refactor code to be more streamlined and efficient
+Include more data and information regarding each art piece
+Earlier century art is sparce due to API, possibly use new API for larger database
 
 ## What I learned from this project:
 
