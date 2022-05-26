@@ -334,8 +334,6 @@ function artDetails(objectNum) {
   xhr.open('GET', 'https://www.rijksmuseum.nl/api/en/collection/' + objectNum + '?key=Rgcbm689');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status);
-    console.log(xhr.response);
     var boldHeader = document.createElement('b');
     var descriptionSpan = document.createElement('span');
 
@@ -375,8 +373,6 @@ function fetchData(data) {
   }
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status);
-    console.log(xhr.response);
     for (var i = 0; i < xhr.response.artObjects.length; i++) {
       createArtPieces(xhr.response.artObjects[i]);
     }
@@ -407,8 +403,6 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status);
-    console.log(xhr.response);
     for (var i = 0; i < xhr.response.artObjects.length; i++) {
       createArtPieces(xhr.response.artObjects[i]);
     }
@@ -467,8 +461,6 @@ function artistSearchAPI(involedMaker) {
   xhr.open('GET', 'https://www.rijksmuseum.nl/api/nl/collection?key=Rgcbm689&ps=30&involvedMaker=' + involedMaker);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status);
-    console.log(xhr.response);
     for (var i = 0; i < xhr.response.artObjects.length; i++) {
       $searchPageList.appendChild(createSearchedArtPieces(xhr.response.artObjects[i]));
     }
